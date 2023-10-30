@@ -27,7 +27,10 @@
                     
                 </div>
                 <div>
-                    4
+                    <div class="mb-1 font-semibold">Category</div>
+
+                    <x-radio-group name="category" 
+                        :options="\App\Models\Job::$category"/>
                 </div>
             </div>
             <button class="w-full">Filter</button>
