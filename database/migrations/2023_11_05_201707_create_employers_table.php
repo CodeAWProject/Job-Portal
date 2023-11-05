@@ -16,7 +16,9 @@ return new class extends Migration
             
             //Every user can own a company and can add some job offers
             $table->string('company_name');
-            $table->foreignIdFor(\App\Models\User::class)->constrained();
+            //Users can optionally be the employer
+            $table->foreignIdFor(\App\Models\User::class)
+                ->nullable()->constrained();
             $table->timestamps();
         });
 
@@ -34,7 +36,7 @@ return new class extends Migration
         Schema::table('jobs', function(Blueprint $table) {
             $table->dropForeignIdFor(\App\Models\Employer::class);
         });
-        
+
         Schema::dropIfExists('employers');
     }
 };
