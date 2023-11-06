@@ -14,7 +14,12 @@ class MyJobApplicationController extends Controller
             //When you call the relationship method on a model, you get those job applications
             //scoped to that very user
             'applications' => auth()->user()->jobApplications()
-                ->with('job', 'job.employer')
+                ->with([
+                        //Getting all job applications of this specific job
+                        'job' => fn($query) => $query->withCount('jobApplications')
+                            ->withAvg('jobApplications', 'expected_salary'),
+                        'job.employer'
+                    ])
                 ->latest()->get()
         ]
     );
