@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
 class JobApplicationController extends Controller
 {
    
-    public function create()
+    public function create(Job $job)
     {
-        //
+        return view('job_application.create', ['job' => $job]);
     }
 
 
