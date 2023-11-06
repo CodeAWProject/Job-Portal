@@ -37,8 +37,16 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
-        //
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        //This would regenerate the csrf token for this session
+        request()->session()->regenerateToken();
+
+        return redirect('/');
+
     }
 }
