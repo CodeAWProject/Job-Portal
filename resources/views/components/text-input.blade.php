@@ -9,7 +9,11 @@
     </button>
     @endif
     <input x-ref="input-{{ $name }}" type="{{ $type }}" placeholder="{{ $placeholder }}" name="{{ $name }}" id="{{$name}}" value="{{ $value }}"
-    class="pr-8 w-full rounded-md border-0 py-1.5 px-2.5 text-sm ring-1 ring-slate-300 placeholder:text-slate-400 focus:ring-2"/>
+    @class(['w-full rounded-md border-0 py-1.5 px-2.5 text-sm ring-1 placeholder:text-slate-400 focus:ring-2',
+            'pr-8' => $formRef,
+            'ring-slate-300' => !$errors->has($name),
+            'ring-red-300' => $errors->has($name),
+    ])/>
 
     {{-- The '$message' variable only exists within the error directive --}}
     @error($name)
