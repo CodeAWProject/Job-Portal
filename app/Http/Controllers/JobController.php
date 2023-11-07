@@ -25,7 +25,7 @@ class JobController extends Controller
         //Loading all the jobs, getting an employer for every single job and applying the filter
         return view(
             'job.index',
-            ['jobs' => Job::with('employer')->filter($filters)->get()]);
+            ['jobs' => Job::with('employer')->latest()->filter($filters)->get()]);
     }
 
     /**
