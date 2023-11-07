@@ -40,9 +40,13 @@
                     <x-label for="category" :required="true">Category</x-label>
                     <x-radio-group name="category"
                     :all-option="false"
-                        :options="\App\Models\Job::$category"/>
+                    :value="old('category')"
+                    :options="\App\Models\Job::$category"/>
                 </div>
                 
+                <div class="col-span-2">
+                    <x-button class="w-full">Create Job</x-button>
+                </div>
             </div>
             </form>
         </x-card>
