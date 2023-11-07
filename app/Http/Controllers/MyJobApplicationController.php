@@ -18,7 +18,8 @@ class MyJobApplicationController extends Controller
                 ->with([
                         //Getting all job applications of this specific job
                         'job' => fn($query) => $query->withCount('jobApplications')
-                            ->withAvg('jobApplications', 'expected_salary'),
+                            ->withAvg('jobApplications', 'expected_salary')
+                            ->withTrashed(),
                         'job.employer'
                     ])
                 ->latest()->get()
