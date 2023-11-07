@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
 
             // You can't have a job application without both a user and a job.
-            $table->foreignIdFor(\App\Models\User::class);
-            $table->foreignIdFor(\App\Models\Job::class)->constrained;
+            $table->foreignIdFor(\App\Models\User::class)->constrained();
+        
+            $table->foreignIdFor(\App\Models\Job::class)->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
 
             $table->unsignedInteger('expected_salary');
