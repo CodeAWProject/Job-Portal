@@ -53,19 +53,11 @@ class MyJobController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Job $myJob)
     {
-        //
+        return view('my_job.edit', ['job' => $myJob]);
     }
 
     /**
